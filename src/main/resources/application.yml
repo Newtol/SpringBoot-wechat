@@ -1,0 +1,53 @@
+server:
+  port: 9090
+spring:
+  redis:
+    database: 0
+    host: localhost
+    password:
+    port: 6379
+    jedis:
+      pool:
+        max-active: 8
+        max-wait: -1
+        max-idle: 8
+        min-idle: 0
+logging:
+  level:
+    cn:
+      newtol: debug
+  path: weiXin
+  pattern:
+    file: "%d{yyyy-MM-dd} === [%thread] === %-5level === %logger{50} ==== %msg%n"
+    console: "%d{yyyy-MM-dd} [%thread] %-5level %logger{50} - %msg%n"
+
+---
+# 微信接入部分配置
+weiXin:
+  # 微信服务器配置的token
+  token: bbbbbbbbbb
+  # Redis中access_token存储的key
+  accessTokenKey: accessToken_
+#  appId: wxc5e0d5b55b141e56
+#  appSecret: 782fc50a471b88e87e544885b2dcc782
+
+menu:
+  button:
+    - sub_button:
+      - clickButton:
+        type: click
+        name: 点击
+        key: hi
+      - clickButton:
+        type: click
+        name: 456
+        key: bye
+      name: 菜单
+    - sub_button:
+      - clickButton:
+        type: view
+        name: 视图2
+        url: http://www.baidu.com
+      name: 视图
+
+
