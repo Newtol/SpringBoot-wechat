@@ -16,8 +16,12 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Component
 public class WeiXinVerify {
+    @NotEmpty(message = "微信接入缺少参数")
     private String signature;
+    @NotEmpty(message = "微信接入缺少参数")
     private String timestamp;
+    @NotEmpty(message = "微信接入缺少参数")
     private String nonce;
+    @NotEmpty(message = "微信接入缺少参数")
     private String echostr;
 }

@@ -21,8 +21,12 @@ public class EncryptUtil {
         byte[] bits = md.digest();
         for (int i = 0; i < bits.length; i++) {
             int a = bits[i];
-            if (a < 0) a += 256;
-            if (a < 16) buf.append("0");
+            if (a < 0){
+                a += 256;
+            }
+            if (a < 16){
+                buf.append("0");
+            } 
             buf.append(Integer.toHexString(a));
         }
         return buf.toString();

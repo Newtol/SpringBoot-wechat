@@ -11,6 +11,8 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class SubButton {
+    /** 二级菜单 */
     private BaseButton[] sub_button;
+    /** 二级菜单的名字 */
     private String name;
 }

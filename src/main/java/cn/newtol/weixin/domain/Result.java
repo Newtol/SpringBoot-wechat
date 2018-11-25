@@ -10,10 +10,18 @@ import lombok.Data;
 
 @Data
 public class Result<T> {
-    /* 错误码 */
+    /**
+     * 错误码
+     */
     private Integer error_code;
-    /* 错误提示信息 */
+
+    /**
+     *  错误提示信息
+     */
     private String message;
-    /* 数据块*/
+
+    /**
+     * 数据块
+     */
     private T data;
 }

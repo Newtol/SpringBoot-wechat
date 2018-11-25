@@ -15,8 +15,11 @@ import javax.validation.constraints.NotEmpty;
 @Data
 @Component
 public class WeiXinBaseInfo{
-    @NotEmpty(message = "密码不能为空" )
+    /** 公众号的appId*/
+    @NotEmpty(message = "appId不能为空" )
     public String appId;
-    @NotEmpty(message = "密码不能为空")
+
+    /** 公众号的appSecret*/
+    @NotEmpty(message = "appSecret不能为空")
     public String appSecret;
 }

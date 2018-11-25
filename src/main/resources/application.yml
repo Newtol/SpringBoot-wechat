@@ -12,6 +12,16 @@ spring:
         max-wait: -1
         max-idle: 8
         min-idle: 0
+
+  datasource:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://localhost:3306/weixin?useSSL=false&useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Shanghai
+      username: root
+      password:
+  jpa:
+      hibernate:
+        ddl-auto: create
+      show-sql: true
 logging:
   level:
     cn:
@@ -28,8 +38,16 @@ weiXin:
   token: bbbbbbbbbb
   # Redis中access_token存储的key
   accessTokenKey: accessToken_
+  # 跳转链接的key
+  redirectUrlKey: redirect_Url
+  # 获取网页授权时，使用的链接地址
+  getWebAuthorize: http://7st3ez.natappfree.cc/getWebAuthorize
+
+
+
 #  appId: wxc5e0d5b55b141e56
 #  appSecret: 782fc50a471b88e87e544885b2dcc782
+#  getWebAuthorize: http://ys5p5e.natappfree.cc/getOpenId
 
 menu:
   button:
@@ -47,7 +65,7 @@ menu:
       - clickButton:
         type: view
         name: 视图2
-        url: http://www.baidu.com
+        url: http://7st3ez.natappfree.cc/redirectUrl?state=010e635c254a61fa5af79b246e7b2697
+        # url: https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc5e0d5b55b141e56&redirect_uri=http://kx6338.natappfree.cc/getWebAuthorize&response_type=code&scope=snsapi_base&state=562b19f393a17dee5da6a174bec899de#wechat_redirect
       name: 视图
-
 

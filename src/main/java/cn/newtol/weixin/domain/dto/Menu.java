@@ -13,5 +13,6 @@ import org.springframework.stereotype.Component;
 @Component
 @ConfigurationProperties(prefix= "menu")
 public class Menu {
+    /** 菜单 */
     private SubButton[] button;
 }

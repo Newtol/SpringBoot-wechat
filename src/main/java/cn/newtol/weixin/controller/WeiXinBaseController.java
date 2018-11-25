@@ -1,20 +1,19 @@
 package cn.newtol.weixin.controller;
 
-import cn.newtol.weixin.Enum.ResultEnum;
-import cn.newtol.weixin.domain.HttpClientResult;
 import cn.newtol.weixin.domain.Result;
 import cn.newtol.weixin.domain.dto.WeiXinBaseInfo;
+import cn.newtol.weixin.domain.dto.WeiXinRedirectUrl;
+import cn.newtol.weixin.domain.dto.WeiXinWebAuthorize;
 import cn.newtol.weixin.domain.dto.WeiXinVerify;
 import cn.newtol.weixin.service.WeiXinBaseService;
-import cn.newtol.weixin.utils.ResultUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
-import java.util.Map;
+import java.security.NoSuchAlgorithmException;
 
 
 /**
@@ -39,10 +38,7 @@ public class WeiXinBaseController {
      */
 
     @GetMapping("/")
-    public String joinWeiXin(@Valid WeiXinVerify weiXinVerify, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            logger.error("微信接入缺少参数");
-        }
+    public String joinWeiXin(@Valid WeiXinVerify weiXinVerify){
         return weiXinBaseService.joinWeiXin(weiXinVerify);
     }
 
@@ -54,12 +50,8 @@ public class WeiXinBaseController {
      */
 
     @GetMapping("/accessToken")
-    public Result getAccessToken(@Valid WeiXinBaseInfo weiXinBaseInfo,BindingResult bindingResult) throws Exception {
-        if (bindingResult.hasErrors()){
-            return ResultUtil.error(ResultEnum.LACK_APPID);
-        }
-        Map<String,String> map = weiXinBaseService.getAccessToken(weiXinBaseInfo);
-        return ResultUtil.success(map);
+    public Result getAccessToken(@Valid WeiXinBaseInfo weiXinBaseInfo) throws Exception {
+        return  weiXinBaseService.getAccessToken(weiXinBaseInfo);
     }
 
     /**
@@ -68,34 +60,49 @@ public class WeiXinBaseController {
      * @Date: Created in 19:58
      * @param:
      */
-
     @GetMapping("/menu")
-    @ResponseBody
-    public Result setMenu(@Valid WeiXinBaseInfo weiXinBaseInfo,BindingResult bindingResult) throws Exception {
-        if (bindingResult.hasErrors()){
-            return ResultUtil.error(ResultEnum.LACK_APPID);
-        }
-        System.out.println(weiXinBaseInfo.toString());
-        HttpClientResult httpClientResult = weiXinBaseService.setWeiXinMenu(weiXinBaseInfo);
-        return ResultUtil.success(httpClientResult);
+    public Result setMenu(@Valid WeiXinBaseInfo weiXinBaseInfo) throws Exception {
+        return weiXinBaseService.setWeiXinMenu(weiXinBaseInfo);
     }
 
-//    @ResponseBody
-//    @GetMapping(value = "/getSession")
-//    public Object getSession (HttpServletRequest request){
-//        Map<String, Object> map = new HashMap<>();
-//        map.put("sessionId", request.getSession().getId());
-//        map.put("message", request.getSession().getAttribute("message"));
-//        return map;
-//    }
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: 获取网页授权
+    * @Date: Created in 20:58
+    * @param:
+    */
+    @GetMapping("/getWebAuthorize")
+    public void WeiXinWebAuthorize(@Valid WeiXinWebAuthorize weiXinWebAuthorize, HttpServletRequest request, HttpServletResponse response) throws Exception {
+        weiXinBaseService.weiXinWebAuthorize(weiXinWebAuthorize,request,response);
+    }
 
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: 获取跳转微信网页授权获取链接时需要使用的state
+    * @Date: Created in 13:07
+    * @param:
+    */
+    @GetMapping("/setRedirectUrl")
+    public Result setRedirectUrl(@Valid WeiXinRedirectUrl weiXinRedirectUrl) throws NoSuchAlgorithmException {
+        return weiXinBaseService.setRedirect(weiXinRedirectUrl);
+    }
 
-//    @GetMapping("/userInfo")
-//    public Result getUserInfo(@Valid WeiXinWebAuthorize weiXinWebAuthorize, BindingResult bindingResult){
-//        if (bindingResult.hasErrors()){
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: 跳转到微信获取网页授权的链接地址
+    * @Date: Created in 19:21
+    * @param:
+    */
+    @GetMapping("/redirectUrl")
+    public void redirectToWeiXin(@RequestParam String state, HttpServletResponse response){
+        weiXinBaseService.redirectToWeiXin(response,state);
+    }
+
 //
-//        }
+//    @GetMapping("/setSession")
+//    public Result setSession(@RequestParam String name, HttpServletRequest request){
+//        request.getSession().setAttribute("User", name);
+//        System.out.println("用户信息："+request.getSession().getAttribute("User"));
+//        return ResultUtil.success(name);
 //    }
-
-
 }

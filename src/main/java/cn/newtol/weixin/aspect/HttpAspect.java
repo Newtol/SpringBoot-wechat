@@ -1,23 +1,27 @@
-package cn.newtol.weixin.aspect;
-
+//package cn.newtol.weixin.aspect;
+//
+////import org.aspectj.lang.JoinPoint;
+////import org.aspectj.lang.annotation.Aspect;
+////import org.aspectj.lang.annotation.Before;
+////import org.aspectj.lang.annotation.Pointcut;
 //import org.aspectj.lang.JoinPoint;
 //import org.aspectj.lang.annotation.Aspect;
 //import org.aspectj.lang.annotation.Before;
 //import org.aspectj.lang.annotation.Pointcut;
-import org.springframework.stereotype.Component;
-import org.springframework.web.context.request.RequestContextHolder;
-import org.springframework.web.context.request.ServletRequestAttributes;
-
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import java.io.IOException;
-import java.net.URL;
-
-/**
- * @Author: 公众号：Newtol
- * @Description:
- * @Date: Created in 15:35 2018/11/10
- */
+//import org.springframework.stereotype.Component;
+//import org.springframework.web.context.request.RequestContextHolder;
+//import org.springframework.web.context.request.ServletRequestAttributes;
+//
+//import javax.servlet.http.HttpServletRequest;
+//import javax.servlet.http.HttpServletResponse;
+//import java.io.IOException;
+//import java.net.URL;
+//
+///**
+// * @Author: 公众号：Newtol
+// * @Description:
+// * @Date: Created in 15:35 2018/11/10
+// */
 //@Aspect
 //@Component
 //public class HttpAspect {
