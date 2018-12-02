@@ -1,10 +1,9 @@
 package cn.newtol.weixin.service;
 
 import cn.newtol.weixin.domain.Result;
-import cn.newtol.weixin.domain.dto.WeiXinBaseInfo;
-import cn.newtol.weixin.domain.dto.WeiXinRedirectUrl;
-import cn.newtol.weixin.domain.dto.WeiXinWebAuthorize;
-import cn.newtol.weixin.domain.dto.WeiXinVerify;
+import cn.newtol.weixin.domain.WeiXinSendAutoMessage;
+import cn.newtol.weixin.domain.dto.*;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpServletRequest;
@@ -33,7 +32,7 @@ public interface WeiXinBaseService {
     * @Date: Created in 19:38
     * @param:
     */
-    Result getAccessToken(WeiXinBaseInfo weiXinBaseInfo) throws Exception;
+    Result getAccessToken(WeiXinConfigInfo weiXinConfigInfo) throws Exception;
 
     /**
     * @Author: 公众号：Newtol
@@ -41,7 +40,7 @@ public interface WeiXinBaseService {
     * @Date: Created in 19:49
     * @param:
     */
-    Result setWeiXinMenu(WeiXinBaseInfo weiXinBaseInfo) throws Exception;
+    Result setWeiXinMenu(WeiXinConfigInfo weiXinConfigInfo) throws Exception;
 
     /**
     * @Author: 公众号：Newtol
@@ -57,7 +56,7 @@ public interface WeiXinBaseService {
     * @Date: Created in 13:16
     * @param:
     */
-    Result setRedirect(WeiXinRedirectUrl weiXinRedirectUrl) throws NoSuchAlgorithmException;
+    Result setRedirect(RedirectUrlWeiXinConfig weiXinRedirectUrl) throws NoSuchAlgorithmException;
 
     /**
     * @Author: 公众号：Newtol
@@ -67,6 +66,19 @@ public interface WeiXinBaseService {
     */
     void redirectToWeiXin(HttpServletResponse response,String state);
 
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: 微信自动回复关键词
+    * @Date: Created in 22:44
+    * @param:
+    */
+    String sendAutoMessage(WeiXinReceiveMessage weiXinReceiveMessage) throws JsonProcessingException;
 
-
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: 设置自动回复内容
+    * @Date: Created in 23:58
+    * @param:
+    */
+    Result setAutoMessage(WeiXinSendAutoMessage weiXinSendAutoMessage);
 }

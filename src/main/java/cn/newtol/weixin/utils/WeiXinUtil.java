@@ -19,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: 公众号：Newtol
- * @Description:
+ * @Description:    微信后台工具类
  * @Date: Created in 17:46 2018/11/24
  */
 @Component
@@ -77,17 +77,14 @@ public class WeiXinUtil {
 
         /*获取失败就抛出异常*/
         if (accessToken == null || "".equals(accessToken)){
-            logger.info("请求AccessToken错误："+"appid"+appId+"appSecret"+appSecret);
+            logger.info("请求AccessToken错误："+"===appid："+appId+"===appSecret："+appSecret);
             throw new TestException(ResultEnum.ERROR_WEIXINBASEINFO);
         }
 
         /*因为Access_Token过期时间为7200所以将Redis中的AccessToken过期时间提前50s过期,将key设置为配置文件中的key+appId的形式*/
         redisUtil.setString(key+appId,accessToken,7150, TimeUnit.SECONDS);
-
         return accessToken;
-
     }
-
     /**
     * @Author: 公众号：Newtol
     * @Description: 接入微信服务器

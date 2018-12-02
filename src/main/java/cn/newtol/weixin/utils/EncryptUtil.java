@@ -9,7 +9,7 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * @Author: REN
- * @Description:
+ * @Description:    加密工具类
  * @Date: Created in 21:57 2018/3/20
  */
 public class EncryptUtil {
@@ -42,7 +42,8 @@ public class EncryptUtil {
         byte[] bt;
         try {
             bt = (new BASE64Decoder()).decodeBuffer(key);
-            return new String(bt,"utf-8");//如果出现乱码可以改成： String(bt, "utf-8")或 gbk
+            //如果出现乱码可以改成： String(bt, "utf-8")或 gbk
+            return new String(bt,"utf-8");
 
         } catch (IOException e) {
             e.printStackTrace();

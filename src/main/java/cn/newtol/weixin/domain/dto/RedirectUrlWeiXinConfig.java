@@ -12,7 +12,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Data
 @Component
-public class WeiXinRedirectUrl extends WeiXinBaseInfo{
+public class RedirectUrlWeiXinConfig extends WeiXinConfigInfo {
 
     /** 获取网页授权时，需要跳转的链接 */
     @NotEmpty(message = "跳转链接不能为空")

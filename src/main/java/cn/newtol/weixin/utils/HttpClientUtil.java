@@ -31,7 +31,7 @@ import org.apache.http.util.EntityUtils;
 
 /**
  * @Author: 公众号：Newtol
- * @Description:
+ * @Description: http请求工具类
  * @Date: Created in 16:45 2018/11/10
  */
 public class HttpClientUtil {

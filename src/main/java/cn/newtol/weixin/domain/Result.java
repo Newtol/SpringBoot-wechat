@@ -13,7 +13,7 @@ public class Result<T> {
     /**
      * 错误码
      */
-    private Integer error_code;
+    private Integer errorCode;
 
     /**
      *  错误提示信息

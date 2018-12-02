@@ -11,7 +11,7 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * @Author: 公众号：Newtol
- * @Description:
+ * @Description:    Redis工具类
  * @Date: Created in 18:55 2018/11/9
  */
 @Service

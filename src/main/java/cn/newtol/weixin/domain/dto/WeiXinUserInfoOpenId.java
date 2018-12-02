@@ -11,7 +11,6 @@ import org.springframework.stereotype.Component;
 @Data
 @Component
 public class WeiXinUserInfoOpenId {
-
     /** snsapi_userinfo为scope时，获取用户信息使用的access_token */
     private String accessToken;
     /** 用户的openId */

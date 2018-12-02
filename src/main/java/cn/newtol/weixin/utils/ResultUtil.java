@@ -17,7 +17,7 @@ public class ResultUtil {
     */
     public static Result success(Object object){
         Result result = new Result();
-        result.setError_code(ResultEnum.SUCCESS.getErrorCode());
+        result.setErrorCode(ResultEnum.SUCCESS.getErrorCode());
         result.setMessage(ResultEnum.SUCCESS.getMessage());
         result.setData(object);
         return result;
@@ -40,7 +40,7 @@ public class ResultUtil {
     */
     public static Result error(Integer code ,String msg){
         Result result = new Result();
-        result.setError_code(code);
+        result.setErrorCode(code);
         result.setMessage(msg);
         return result;
     }
@@ -53,7 +53,7 @@ public class ResultUtil {
     */
     public static  Result error(ResultEnum resultEnum){
         Result result = new Result();
-        result.setError_code(resultEnum.getErrorCode());
+        result.setErrorCode(resultEnum.getErrorCode());
         result.setMessage(resultEnum.getMessage());
         return result;
     }

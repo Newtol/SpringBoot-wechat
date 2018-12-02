@@ -4,6 +4,7 @@ import cn.newtol.weixin.Enum.ResultEnum;
 import cn.newtol.weixin.domain.Result;
 import cn.newtol.weixin.exceptions.TestException;
 import cn.newtol.weixin.utils.ResultUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.validation.BindException;
@@ -56,11 +57,22 @@ public class ExceptionHandle {
     */
     @ExceptionHandler(Exception.class)
     @ResponseBody
-    public Result unknowExceptionHandler(Exception e){
-        logger.error("系统未知错误"+e.getMessage());
+    public Result systemExceptionHandler(Exception e){
+        logger.error("系统未知错误:"+e.getMessage());
         return ResultUtil.error(ResultEnum.UNKONW_ERROR);
     }
 
+    /**
+    * @Author: 公众号：Newtol
+    * @Description: XML序列化失败
+    * @Date: Created in 23:19
+    * @param:
+    */
+    @ExceptionHandler(JsonProcessingException.class)
+    @ResponseBody
+    public void jsonProcessingExceptionHandler (Exception e){
+        logger.error("XML序列化失败"+e.getMessage());
+    }
 
 
 

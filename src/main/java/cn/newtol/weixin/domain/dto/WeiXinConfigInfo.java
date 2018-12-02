@@ -14,7 +14,7 @@ import javax.validation.constraints.NotEmpty;
  */
 @Data
 @Component
-public class WeiXinBaseInfo{
+public class WeiXinConfigInfo {
     /** 公众号的appId*/
     @NotEmpty(message = "appId不能为空" )
     public String appId;

@@ -20,7 +20,7 @@ spring:
       password:
   jpa:
       hibernate:
-        ddl-auto: create
+        ddl-auto: update
       show-sql: true
 logging:
   level:
@@ -41,7 +41,7 @@ weiXin:
   # 跳转链接的key
   redirectUrlKey: redirect_Url
   # 获取网页授权时，使用的链接地址
-  getWebAuthorize: http://7st3ez.natappfree.cc/getWebAuthorize
+  getWebAuthorize: http://newtol.wezoz.com/getWebAuthorize
 
 
 
@@ -49,6 +49,10 @@ weiXin:
 #  appSecret: 782fc50a471b88e87e544885b2dcc782
 #  getWebAuthorize: http://ys5p5e.natappfree.cc/getOpenId
 
+# {"url":"http:\/\/mmbiz.qpic.cn\/mmbiz_jpg\/icor8DRGziah4INEIVibGtiapicKQzvibVicNeqwbkUEHefqlNYHeLc94yibH7ZV3FJqdviaZXL0HPUlUvtldfRwnUc2npA\/0"}
+
+# {"media_id":"tP0y34JmbzKUFw-m4Zy6U3VZcoCjUvql9yZfVTa9mwM","url":"http:\/\/mmbiz.qpic.cn\/mmbiz_jpg\/icor8DRGziah4INEIVibGtiapicKQzvibVicNeqwbkUEHefqlNYHeLc94yibH7ZV3FJqdviaZXL0HPUlUvtldfRwnUc2npA\/0?wx_fmt=jpeg"}
+# {"media_id":"tP0y34JmbzKUFw-m4Zy6U16PpUXJjo0OP5hxBce3P5s","url":"http:\/\/mmbiz.qpic.cn\/mmbiz_jpg\/icor8DRGziah4INEIVibGtiapicKQzvibVicNeqnvMSEPvK3csvlvKPKaBmwAKMZ9ibUVc9icJXJicNPNM9ViaLrs04YUmJPg\/0?wx_fmt=jpeg"}
 menu:
   button:
     - sub_button:
@@ -58,14 +62,13 @@ menu:
         key: hi
       - clickButton:
         type: click
-        name: 456
-        key: bye
-      name: 菜单
+        name: 点击2
+        key: hi1
+      name: 视图
     - sub_button:
       - clickButton:
         type: view
         name: 视图2
-        url: http://7st3ez.natappfree.cc/redirectUrl?state=010e635c254a61fa5af79b246e7b2697
-        # url: https://open.weixin.qq.com/connect/oauth2/authorize?appid=wxc5e0d5b55b141e56&redirect_uri=http://kx6338.natappfree.cc/getWebAuthorize&response_type=code&scope=snsapi_base&state=562b19f393a17dee5da6a174bec899de#wechat_redirect
-      name: 视图
+        url: http://newtol.wezoz.com/redirectUrl?state=010e635c254a61fa5af79b246e7b2697
+      name: 菜单
 
